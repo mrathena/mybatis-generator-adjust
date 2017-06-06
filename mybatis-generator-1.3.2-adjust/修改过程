@@ -23,6 +23,50 @@ org.mybatis.generator.codegen.mybatis3.IntrospectedTableMyBatis3Impl.getGenerate
 218: true改成false // 控制是否合并生成xml文件
 
 
+org.mybatis.generator.codegen.mybatis3.xmlmapper.XMLMapperGenerator.getSqlMapElement() // 调整生成Mapper中方法的顺序
+    protected XmlElement getSqlMapElement() {
+        FullyQualifiedTable table = introspectedTable.getFullyQualifiedTable();
+        progressCallback.startTask(getString(
+                "Progress.12", table.toString())); //$NON-NLS-1$
+        XmlElement answer = new XmlElement("mapper"); //$NON-NLS-1$
+        String namespace = introspectedTable.getMyBatis3SqlMapNamespace();
+        answer.addAttribute(new Attribute("namespace", //$NON-NLS-1$
+                namespace));
+
+        context.getCommentGenerator().addRootComment(answer);
+
+        addResultMapWithoutBLOBsElement(answer);
+        addResultMapWithBLOBsElement(answer);
+        addExampleWhereClauseElement(answer);
+        addMyBatis3UpdateByExampleWhereClauseElement(answer);
+        addBaseColumnListElement(answer);
+        addBlobColumnListElement(answer);
+        addSelectByExampleWithBLOBsElement(answer);
+        addSelectByExampleWithoutBLOBsElement(answer);
+        addDeleteByExampleElement(answer);
+        addCountByExampleElement(answer);
+        addUpdateByExampleSelectiveElement(answer);
+        addUpdateByExampleWithBLOBsElement(answer);
+        addUpdateByExampleWithoutBLOBsElement(answer);
+        addUpdateByPrimaryKeyWithBLOBsElement(answer);
+        
+        // insert
+        addInsertElement(answer);
+        // insertSelective
+        addInsertSelectiveElement(answer);
+        // updateByPrimaryKey
+        addUpdateByPrimaryKeyWithoutBLOBsElement(answer);
+        // updateByPrimaryKeySelective
+        addUpdateByPrimaryKeySelectiveElement(answer);
+        // deleteByPrimaryKey
+        addDeleteByPrimaryKeyElement(answer);
+        // selectByPrimaryKey
+        addSelectByPrimaryKeyElement(answer);
+
+        return answer;
+    }
+
+
 org.mybatis.generator.internal.DefaultCommentGenerator // 注释
 addComment(): 清空 // 给XML文件加注释
 addRootComment(): 清空 // 给XML文件加注释
@@ -112,50 +156,6 @@ addRootComment(): 清空 // 给XML文件加注释
 		.append(" */");
 		method.addJavaDocLine(sb.toString());
 	}
-
-
-org.mybatis.generator.codegen.mybatis3.xmlmapper.XMLMapperGenerator.getSqlMapElement() // 调整生成Mapper中方法的顺序
-    protected XmlElement getSqlMapElement() {
-        FullyQualifiedTable table = introspectedTable.getFullyQualifiedTable();
-        progressCallback.startTask(getString(
-                "Progress.12", table.toString())); //$NON-NLS-1$
-        XmlElement answer = new XmlElement("mapper"); //$NON-NLS-1$
-        String namespace = introspectedTable.getMyBatis3SqlMapNamespace();
-        answer.addAttribute(new Attribute("namespace", //$NON-NLS-1$
-                namespace));
-
-        context.getCommentGenerator().addRootComment(answer);
-
-        addResultMapWithoutBLOBsElement(answer);
-        addResultMapWithBLOBsElement(answer);
-        addExampleWhereClauseElement(answer);
-        addMyBatis3UpdateByExampleWhereClauseElement(answer);
-        addBaseColumnListElement(answer);
-        addBlobColumnListElement(answer);
-        addSelectByExampleWithBLOBsElement(answer);
-        addSelectByExampleWithoutBLOBsElement(answer);
-        addDeleteByExampleElement(answer);
-        addCountByExampleElement(answer);
-        addUpdateByExampleSelectiveElement(answer);
-        addUpdateByExampleWithBLOBsElement(answer);
-        addUpdateByExampleWithoutBLOBsElement(answer);
-        addUpdateByPrimaryKeyWithBLOBsElement(answer);
-        
-        // insert
-        addInsertElement(answer);
-        // insertSelective
-        addInsertSelectiveElement(answer);
-        // updateByPrimaryKey
-        addUpdateByPrimaryKeyWithoutBLOBsElement(answer);
-        // updateByPrimaryKeySelective
-        addUpdateByPrimaryKeySelectiveElement(answer);
-        // deleteByPrimaryKey
-        addDeleteByPrimaryKeyElement(answer);
-        // selectByPrimaryKey
-        addSelectByPrimaryKeyElement(answer);
-
-        return answer;
-    }
 
 
 org.mybatis.generator.internal.DefaultShellCallback.getDirectory() // 

@@ -15,14 +15,14 @@
  */
 package org.mybatis.generator.plugins;
 
+import java.util.List;
+
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.PluginAdapter;
 import org.mybatis.generator.api.dom.java.JavaVisibility;
 import org.mybatis.generator.api.dom.java.Method;
 import org.mybatis.generator.api.dom.java.TopLevelClass;
-
-import java.util.List;
 
 /**
  * This plugin adds fluent builder methods to the generated model
@@ -58,8 +58,9 @@ public class FluentBuilderMethodsPlugin extends  PluginAdapter {
         fluentMethod.getParameters().addAll(method.getParameters());
          
 
-        context.getCommentGenerator().addGeneralMethodComment(fluentMethod,
-                introspectedTable);
+//        context.getCommentGenerator().addGeneralMethodComment(fluentMethod, introspectedTable);
+//        context.getCommentGenerator().addWitherComment(fluentMethod, introspectedTable, introspectedColumn);
+        context.getCommentGenerator().addGetterComment(fluentMethod, introspectedTable, introspectedColumn);
         StringBuilder sb = new StringBuilder()
           .append("this.")
           .append(method.getName())
