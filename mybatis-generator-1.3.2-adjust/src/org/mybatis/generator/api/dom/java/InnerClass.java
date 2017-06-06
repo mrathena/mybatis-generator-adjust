@@ -168,8 +168,8 @@ public class InnerClass extends JavaElement {
         }
 
         sb.append(" {"); //$NON-NLS-1$
-        indentLevel++;
         OutputUtilities.newLine(sb);
+        indentLevel++;
         
         Iterator<Field> fldIter = fields.iterator();
         while (fldIter.hasNext()) {
@@ -238,8 +238,8 @@ public class InnerClass extends JavaElement {
 
         indentLevel--;
         OutputUtilities.newLine(sb);
-        OutputUtilities.newLine(sb);
         OutputUtilities.javaIndent(sb, indentLevel);
+        OutputUtilities.newLine(sb);
         sb.append('}');
 
         return sb.toString();

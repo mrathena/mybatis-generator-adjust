@@ -126,11 +126,21 @@ public class DefaultCommentGenerator implements CommentGenerator {
 		if (suppressAllComments) {
 			return;
 		}
+		StringBuilder sb = new StringBuilder();
+        sb.append("/** ")
+        .append(introspectedTable.getFullyQualifiedTable())
+		.append(" */");
+        innerClass.addJavaDocLine(sb.toString());
 	}
 	public void addClassComment(InnerClass innerClass, IntrospectedTable introspectedTable) {
 		if (suppressAllComments) {
 			return;
 		}
+		StringBuilder sb = new StringBuilder();
+        sb.append("/** ")
+        .append(introspectedTable.getFullyQualifiedTable())
+		.append(" */");
+        innerClass.addJavaDocLine(sb.toString());
 	}
 
 	public void addEnumComment(InnerEnum innerEnum, IntrospectedTable introspectedTable) {

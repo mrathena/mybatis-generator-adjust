@@ -28,6 +28,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
+import org.mybatis.generator.api.dom.OutputUtilities;
+
 /**
  * The Class Interface.
  *
@@ -170,6 +172,7 @@ public class Interface extends JavaElement implements CompilationUnit {
         }
 
         sb.append(" {"); //$NON-NLS-1$
+        OutputUtilities.newLine(sb);
         indentLevel++;
 
         Iterator<Method> mtdIter = getMethods().iterator();
@@ -185,6 +188,7 @@ public class Interface extends JavaElement implements CompilationUnit {
         indentLevel--;
         newLine(sb);
         javaIndent(sb, indentLevel);
+        OutputUtilities.newLine(sb);
         sb.append('}');
 
         return sb.toString();

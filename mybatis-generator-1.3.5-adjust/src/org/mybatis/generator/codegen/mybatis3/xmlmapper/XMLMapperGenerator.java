@@ -74,18 +74,25 @@ public class XMLMapperGenerator extends AbstractXmlGenerator {
         addBlobColumnListElement(answer);
         addSelectByExampleWithBLOBsElement(answer);
         addSelectByExampleWithoutBLOBsElement(answer);
-        addSelectByPrimaryKeyElement(answer);
-        addDeleteByPrimaryKeyElement(answer);
         addDeleteByExampleElement(answer);
-        addInsertElement(answer);
-        addInsertSelectiveElement(answer);
         addCountByExampleElement(answer);
         addUpdateByExampleSelectiveElement(answer);
         addUpdateByExampleWithBLOBsElement(answer);
         addUpdateByExampleWithoutBLOBsElement(answer);
-        addUpdateByPrimaryKeySelectiveElement(answer);
         addUpdateByPrimaryKeyWithBLOBsElement(answer);
+        
+        // insert
+        addInsertElement(answer);
+        // insertSelective
+        addInsertSelectiveElement(answer);
+        // updateByPrimaryKey
         addUpdateByPrimaryKeyWithoutBLOBsElement(answer);
+        // updateByPrimaryKeySelective
+        addUpdateByPrimaryKeySelectiveElement(answer);
+        // deleteByPrimaryKey
+        addDeleteByPrimaryKeyElement(answer);
+        // selectByPrimaryKey
+        addSelectByPrimaryKeyElement(answer);
 
         return answer;
     }

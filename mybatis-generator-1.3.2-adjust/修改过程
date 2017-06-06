@@ -10,14 +10,13 @@ javaIndent().55: sb.append("\t"); // 控制生成的java文件中的缩进, 默�
 
 
 org.mybatis.generator.api.dom.java.Interface.getFormattedContent() // 控制生成mapper类以及格式化
-146, 162: 添加 newLine(sb); // 让生成的第一个方法/最后一个方法与的接口声明之间有一个空行
+sb.append(" {");后, sb.append('}');前: 添加[OutputUtilities.newLine(sb);],让生成的第一个方法/最后一个方法与的接口声明之间有一个空行
 
 
 org.mybatis.generator.api.dom.java.InnerClass.getFormattedContent() // 控制生成entity类以及格式化
-172: OutputUtilities.newLine(sb); // 让生成的第一个属性与类的声明之间有一个空行
+sb.append(" {");后, sb.append('}');前: 添加[OutputUtilities.newLine(sb);],让生成的第一个属性与类的声明之间有一个空行
 178-180: 注释掉 // 去掉每个属性之间的空行
 206-208: 注释掉 // 去掉每个getter和setter之间的空行
-239: 向下复制一行 // 最后一个setter和class结束的}之间添加一个空行
 
 
 org.mybatis.generator.codegen.mybatis3.IntrospectedTableMyBatis3Impl.getGeneratedXmlFiles() // 

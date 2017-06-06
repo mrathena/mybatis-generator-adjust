@@ -243,6 +243,7 @@ public class InnerClass extends JavaElement {
         }
 
         sb.append(" {"); //$NON-NLS-1$
+        OutputUtilities.newLine(sb);
         indentLevel++;
         
         Iterator<Field> fldIter = fields.iterator();
@@ -250,9 +251,9 @@ public class InnerClass extends JavaElement {
             OutputUtilities.newLine(sb);
             Field field = fldIter.next();
             sb.append(field.getFormattedContent(indentLevel, compilationUnit));
-            if (fldIter.hasNext()) {
-                OutputUtilities.newLine(sb);
-            }
+//            if (fldIter.hasNext()) {
+//                OutputUtilities.newLine(sb);
+//            }
         }
 
         if (initializationBlocks.size() > 0) {
@@ -278,9 +279,9 @@ public class InnerClass extends JavaElement {
             OutputUtilities.newLine(sb);
             Method method = mtdIter.next();
             sb.append(method.getFormattedContent(indentLevel, false, compilationUnit));
-            if (mtdIter.hasNext()) {
-                OutputUtilities.newLine(sb);
-            }
+//            if (mtdIter.hasNext()) {
+//                OutputUtilities.newLine(sb);
+//            }
         }
 
         if (innerClasses.size() > 0) {
@@ -313,6 +314,7 @@ public class InnerClass extends JavaElement {
         indentLevel--;
         OutputUtilities.newLine(sb);
         OutputUtilities.javaIndent(sb, indentLevel);
+        OutputUtilities.newLine(sb);
         sb.append('}');
 
         return sb.toString();
