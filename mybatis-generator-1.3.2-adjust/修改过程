@@ -160,3 +160,14 @@ addRootComment(): 清空 // 给XML文件加注释
 
 org.mybatis.generator.internal.DefaultShellCallback.getDirectory() // 
 51-52: 注释掉, 替换成 project.mkdirs(); // 默认不给生成config.xml中targetProject指定的文件夹
+
+
+修改后的报安装到本地Maven仓库
+命令
+mvn install:install-file -DgroupId=com.mrathena -DartifactId=mybatis-generator-core-adjust -Dversion=1.3.2 -Dpackaging=jar -Dfile=D:/mybatis-generator-core-1.3.2.jar
+使用
+<dependency>
+    <groupId>com.mrathena</groupId>
+    <artifactId>mybatis-generator-core-adjust</artifactId>
+    <version>1.3.2</version>
+</dependency>
